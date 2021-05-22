@@ -1,1 +1,0 @@
-{"version":3,"sources":["sass/_example.scss"],"names":[],"mappings":"AAAA,KACE,YAEF,MACE,YAAA,CACA,sBAEF,MACE,WAAA,CACA","file":"src.780b76bf.css","sourceRoot":"../src","sourcesContent":[".box {\n  margin: 20px;\n}\nlabel {\n  display: flex;\n  flex-direction: column;\n}\ninput {\n  width: 200px;\n  margin-top: 20px;\n}\n"]}
