@@ -1,16 +1,16 @@
-<h1>{{name}}</h1>
+<h1 class="country-name">{{name}}</h1>
 <div class="country-box">
     <div class="info">
-        <p>Capital: {{capital}}</p>
-        <p>Population: {{population}}</p>
-        <p>Languages:</p>
+        <p class="text"><span class="bold-text">Capital:</span> {{capital}}</p>
+        <p class="text"><span class="bold-text">Population:</span> {{population}}</p>
+        <p class="bold-text text">Languages:</p>
         <ul>
             {{#each languages}}
-            <li>{{name}}</li>
+            <li class="language">{{name}}</li>
             {{/each}}
         </ul>
     </div>
     <div class="image">
-        <img src="{{flag}}" alt="Flag of {{name}}">
+        <img src="{{flag}}" alt="Flag of {{name}}" width="600">
     </div>
 </div>
