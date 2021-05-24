@@ -3,6 +3,7 @@ import './sass/main.scss';
 import '@pnotify/core/dist/BrightTheme.css';
 import '@pnotify/core/dist/PNotify.css';
 import fetchCountries from './js/fetchCountries.js';
+import isEmptyString from './js/isEmptyString';
 import listTpl from './templates/countries-list.hbs';
 import countryTpl from './templates/specificCountry.hbs';
 
@@ -22,11 +23,17 @@ let markUp = null;
 
 refs.input.addEventListener('input', debounce(handleInput, 500));
 
-function handleInput(event) {
+async function handleInput(event) {
   const query = event.target.value;
 
-  fetchCountries(query)
-    .then(data => {
+  if (isEmptyString(query)) {
+    error({
+      text: 'Please, enter something!!!',
+    });
+  } else {
+    try {
+      const data = await fetchCountries(query);
+
       if (data.length > 10) {
         const tooManyMatches = error({
           text: 'Too many matches found! Please, enter a more specific query!',
@@ -38,13 +45,10 @@ function handleInput(event) {
         markUp = countryTpl(...data);
         refs.container.innerHTML = markUp;
       }
-    })
-    .catch(e => {
+    } catch {
       const tooManyMatches = error({
         text: 'Please, enter the correct country name!',
       });
-    })
-    .finally(() => {
-      refs.form.reset();
-    });
+    }
+  }
 }
