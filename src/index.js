@@ -73,6 +73,7 @@ async function handleCountryClick(event) {
     markUp = countryTpl(...data);
     refs.countryContainer.innerHTML = markUp;
   } catch (er) {
+    alert(er);
     const countryError = error({
       text: er,
     });
